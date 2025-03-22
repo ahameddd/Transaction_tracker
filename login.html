@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpiceHut - Staff Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .logo img {
+            height: 40px;
+        }
+        .timestamp {
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #666666;
+        }
+        .auth-container {
+            max-width: 500px;
+            width: 90%;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            color: #666;
+            user-select: none;
+        }
+        .password-toggle:hover {
+            color: #333;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: #f44336;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="spicehut-logo.png" alt="SpiceHut Logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #000000;">Staff Login</h2>
+            <div class="timestamp" id="currentTimestamp"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                    <span class="password-toggle" id="passwordToggle">👁️</span>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Firebase with your config
+        const firebaseConfig = {
+            apiKey: "AIzaSyACkRlGY3uY7-SkhahrV2aaTyJkVQQQrMs",
+            authDomain: "database-43059.firebaseapp.com",
+            databaseURL: "https://database-43059-default-rtdb.firebaseio.com",
+            projectId: "database-43059",
+            storageBucket: "database-43059.firebasestorage.app",
+            messagingSenderId: "467133295597",
+            appId: "1:467133295597:web:a5e507dccdeca1bcb255e4",
+            measurementId: "G-7TNYN5M4ST"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Update timestamp
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('currentTimestamp').textContent = now.toLocaleString();
+        }
+        
+        // Update timestamp every second
+        updateTimestamp();
+        setInterval(updateTimestamp, 1000);
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // Handle Login
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                await firebase.auth().signInWithEmailAndPassword(email, password);
+                window.location.href = 'index.html';
+            } catch (error) {
+                showError('Invalid email or password');
+                console.error('Login error:', error);
+            }
+        });
+
+        // Password visibility toggle
+        document.getElementById('passwordToggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+        });
+    </script>
+</body>
+</html> 
