@@ -98,17 +98,19 @@ input, select, textarea {
     font-size: 18px;
     border-radius: 8px;
     border: 1px solid #999;
-    background-color: #d0e7ff; /* Light Blue */
-    transition: box-shadow 0.3s ease-in-out;
+    background-color: #d0e7ff !important; /* Light Blue */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: #000; /* Ensures text is visible */
 }
 
-/* Ensure focus and hover effects retain light blue */
+/* Ensure hover and focus effects retain light blue */
 input:hover, select:hover, textarea:hover,
 input:focus, select:focus, textarea:focus {
-    background-color: #d0e7ff !important; /* Retain Light Blue */
+    background-color: #b3daff !important; /* Slightly darker light blue */
     box-shadow: 0 0 8px rgba(0, 102, 255, 0.7); /* Blue glow effect */
     outline: none;
 }
+
     </style>
 </head>
 <body>
