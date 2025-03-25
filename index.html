@@ -154,9 +154,40 @@ input:focus, select:focus, textarea:focus {
                     <select id="record" name="record" required>
                         <option value="" disabled selected>Select a Record</option>
                         <option value="sales">Sales</option>
-                        <option value="chicken">Chicken</option>
-                        <option value="maida">Maida</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="rice">Rice</option>
                         <option value="oil">Oil</option>
+                        <option value="chicken">Chicken</option>
+                        <option value="seaFood">Sea Food</option>
+                        <option value="eggs">Eggs</option>
+                        <option value="dairyProducts">Dairy Products</option>
+                        <option value="water">Water</option>
+                        <option value="lpg">LPG</option>
+                        <option value="charCoal">Char Coal</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="packingMaterials">Packing Materials</option>
+                        <option value="cleaningMaterials">Cleaning Materials</option>
+                        <option value="stationaries">Stationaries</option>
+                        <option value="maida">Maida</option>
+                        <option value="cashew">Cashew</option>
+                        <option value="sakthiMasala">Sakthi Masala</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="fruits">Fruits</option>
+                        <option value="noodles">Noodles</option>
+                        <option value="mutton">Mutton</option>
+                        <option value="onion">Onion</option>
+                        <option value="beverages">Beverages</option>
+                        <option value="garlic">Garlic</option>
+                        <option value="firewood">Firewood</option>
+                        <option value="electricityCharges">Electricity Charges</option>
+                        <option value="taxesAndMunicipality">Taxes & Municipality</option>
+                        <option value="bankDues">Bank Dues</option>
+                        <option value="wagesAndRent">Wages & Rent</option>
+                        <option value="transportCharges">Transport Charges</option>
+                        <option value="repairsAndMaintenance">Repairs & Maintenance</option>
+                        <option value="storeStock">Store Stock</option>
+                        <option value="otherExpenses">Other Expenses</option>
                     </select>
                 </div>
 
@@ -345,7 +376,7 @@ input:focus, select:focus, textarea:focus {
                 };
 
                 // Send transaction data to Google Sheets
-                const response = await fetch('https://script.google.com/macros/s/AKfycbybtas0NPYf-CsBD7WNXJRCadMJ8ZeiB06uOu0R6408bhg0T2b7bSIFB92NgXOKktbN/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyOSBX47CgGr_p-BEgv3aMXuTTyHTIzGUEnpdwcBYS83hHXvHdZx6AkzFqxyTO5gz4X/exec', {
                     method: 'POST',
                     body: JSON.stringify(formData),
                     mode: 'no-cors'
