@@ -5,7 +5,7 @@ SpiceHut Transaction System - A secure web app for recording business transactio
 
 A web-based transaction management system for SpiceHut, built with HTML, CSS, and JavaScript. The system features secure user authentication using Firebase and stores transaction data in Google Sheets.
 
-## Features
+# Features
 - Secure staff login with email authentication
 - Real-time transaction recording
 - Multiple record types (Sales, Chicken, Maida, Oil)
